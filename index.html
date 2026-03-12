@@ -136,15 +136,15 @@
           <p class="screen-subtitle">Personaliza tu experiencia</p>
 
           <div class="menu-list">
-            <div class="menu-item" id="menuSonidos">
+            <div class="menu-item" id="menuSonidos" data-screen="screenSonidos">
               <span class="menu-item-text">🎵 Sonidos de alarma</span>
               <span class="menu-chevron">&gt;</span>
             </div>
-            <div class="menu-item" id="menuVoz">
+            <div class="menu-item" id="menuVoz" data-screen="screenVoz">
               <span class="menu-item-text">🎤 Controles por voz</span>
               <span class="menu-chevron">&gt;</span>
             </div>
-            <div class="menu-item" id="menuLaborales">
+            <div class="menu-item" id="menuLaborales" data-screen="screenLaborales">
               <span class="menu-item-text">📅 Días laborales</span>
               <span class="menu-chevron">&gt;</span>
             </div>
@@ -175,7 +175,7 @@
            ═══════════════════════════════════════════════════════ -->
       <div class="screen" id="screenSonidos">
         <header class="top-bar top-bar-sub">
-          <button class="btn-back-label" id="btnBackSonidos" type="button">&lt; Preferencias</button>
+          <button class="btn-back-label" id="btnBackSonidos" type="button" data-back="screenPreferencias">&lt; Preferencias</button>
           <span class="top-bar-title">Sonidos</span>
           <button class="btn-menu" type="button">&#9776;</button>
         </header>
@@ -222,7 +222,7 @@
           </div>
 
           <div class="btn-pair">
-            <button class="btn-secondary" id="btnCancelSonidos">Cancelar</button>
+            <button class="btn-secondary" id="btnCancelSonidos" data-back="screenPreferencias">Cancelar</button>
             <button class="btn-primary"   id="btnSaveSonidos">Guardar</button>
           </div>
         </div>
@@ -241,7 +241,7 @@
            ═══════════════════════════════════════════════════════ -->
       <div class="screen" id="screenVoz">
         <header class="top-bar top-bar-sub">
-          <button class="btn-back-label" id="btnBackVoz" type="button">&lt; Preferencias</button>
+          <button class="btn-back-label" id="btnBackVoz" type="button" data-back="screenPreferencias">&lt; Preferencias</button>
           <span class="top-bar-title">Voz</span>
           <button class="btn-menu" type="button">&#9776;</button>
         </header>
@@ -319,7 +319,7 @@
           <button class="btn-secondary btn-full" id="btnProbarVoz">Probar voz</button>
 
           <div class="btn-pair">
-            <button class="btn-secondary" id="btnCancelVoz">Cancelar</button>
+            <button class="btn-secondary" id="btnCancelVoz" data-back="screenPreferencias">Cancelar</button>
             <button class="btn-primary"   id="btnSaveVoz">Guardar</button>
           </div>
         </div>
@@ -338,13 +338,15 @@
            ═══════════════════════════════════════════════════════ -->
       <div class="screen" id="screenLaborales">
         <header class="top-bar top-bar-sub">
-          <button class="btn-back-label" id="btnBackLaborales" type="button">&lt; Preferencias</button>
+          <button class="btn-back-label" id="btnBackLaborales" type="button" data-back="screenPreferencias">&lt; Preferencias</button>
           <span class="top-bar-title">Laborales</span>
           <button class="btn-menu" type="button">&#9776;</button>
         </header>
 
         <div class="screen-body screen-body-scroll">
           <p class="section-heading-main">Apagar alarma por voz</p>
+
+          <p class="section-heading-main">Seguimiento de días laborales</p>
 
           <div class="toggle-row">
             <span class="toggle-row-label">Seguimiento automático</span>
@@ -370,7 +372,7 @@
 
           <p class="section-label-sm">Si manual:</p>
           <p class="section-label-sm">Dias laborales:</p>
-          <div class="chk-list">
+          <div class="chk-list chk-list--days">
             <label class="chk-item"><input type="checkbox" checked /><span class="chk-box"></span><span class="chk-text">L</span></label>
             <label class="chk-item"><input type="checkbox" checked /><span class="chk-box"></span><span class="chk-text">M</span></label>
             <label class="chk-item"><input type="checkbox" checked /><span class="chk-box"></span><span class="chk-text">X</span></label>
@@ -414,7 +416,7 @@
           </div>
 
           <div class="btn-pair">
-            <button class="btn-secondary" id="btnCancelLaborales">Cancelar</button>
+            <button class="btn-secondary" id="btnCancelLaborales" data-back="screenPreferencias">Cancelar</button>
             <button class="btn-primary"   id="btnSaveLaborales">Guardar</button>
           </div>
         </div>

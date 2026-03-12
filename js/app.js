@@ -43,6 +43,10 @@ $(function () {
       showToast('Completa todos los campos');
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('Ingresa un correo válido');
+      return;
+    }
     goTo('screenHome');
   });
 
@@ -82,29 +86,13 @@ $(function () {
   });
 
   /* ── Menú Preferencias: items ────────────────────────── */
-  $('#menuSonidos').on('click', function () {
-    goTo('screenSonidos');
+  $(document).on('click', '.menu-item[data-screen]', function () {
+    goTo($(this).data('screen'));
   });
 
-  $('#menuVoz').on('click', function () {
-    goTo('screenVoz');
-  });
-
-  $('#menuLaborales').on('click', function () {
-    goTo('screenLaborales');
-  });
-
-  /* ── Volver desde sub-pantallas ──────────────────────── */
-  $('#btnBackSonidos, #btnCancelSonidos').on('click', function () {
-    goTo('screenPreferencias');
-  });
-
-  $('#btnBackVoz, #btnCancelVoz').on('click', function () {
-    goTo('screenPreferencias');
-  });
-
-  $('#btnBackLaborales, #btnCancelLaborales').on('click', function () {
-    goTo('screenPreferencias');
+  /* ── Volver/cancelar desde sub-pantallas ──────────────── */
+  $(document).on('click', '[data-back]', function () {
+    goTo($(this).data('back'));
   });
 
   /* ── Guardar Sonidos ─────────────────────────────────── */
@@ -158,21 +146,8 @@ $(function () {
   });
 
   function syncRadioDots(groupName) {
-    $('input[name="' + groupName + '"]').each(function () {
-      const $dot = $(this).closest('.radio-plain').find('.radio-dot');
-      if ($(this).is(':checked')) {
-        $dot.css({
-          'border-color': 'var(--c-link)',
-          'background':   'var(--c-link)',
-          'box-shadow':   'inset 0 0 0 3px #fff'
-        });
-      } else {
-        $dot.css({
-          'border-color': 'var(--c-outline-bd)',
-          'background':   '#fff',
-          'box-shadow':   'none'
-        });
-      }
+    $('input[name="' + groupName + '"]').closest('.radio-plain').each(function () {
+      $(this).toggleClass('radio-checked', $(this).find('input').is(':checked'));
     });
   }
 
@@ -221,11 +196,11 @@ $(function () {
     const h   = String(now.getHours()).padStart(2, '0');
     const m   = String(now.getMinutes()).padStart(2, '0');
     const timeStr = h + ':' + m;
-    $('#topBarTimeHome, #topBarTimePref').text(timeStr);
+    $('.top-bar-time').text(timeStr);
   }
 
   updateClocks();
-  setInterval(updateClocks, 30000);
+  setInterval(updateClocks, 60000);
 
 
   /* ═══════════════════════════════════════════════════════
