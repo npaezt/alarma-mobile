@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alarma App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- Marco del teléfono centrado en desktop -->
+  <div class="desktop-bg">
+    <div class="phone-frame">
+
+      <!-- ═══════════════════════════════════════════════════════
+           PANTALLA 1 — LOGIN
+           ═══════════════════════════════════════════════════════ -->
+      <div class="screen active" id="screenLogin">
+        <div class="login-wrap">
+          <div class="login-logo">ALARMA</div>
+          <h1 class="login-title">Bienvenido</h1>
+          <p class="login-sub">Inicia sesión para continuar</p>
+
+          <div class="field-group">
+            <label class="field-label" for="inputEmail">Correo electrónico</label>
+            <input
+              class="field-input"
+              type="email"
+              id="inputEmail"
+              placeholder="usuario@example.com"
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="inputPwd">Contraseña</label>
+            <div class="field-pwd-wrap">
+              <input
+                class="field-input"
+                type="password"
+                id="inputPwd"
+                placeholder="••••••••••"
+                autocomplete="current-password"
+              />
+              <button class="btn-eye" id="btnEye" type="button" aria-label="Mostrar contraseña">👁</button>
+            </div>
+          </div>
+
+          <div class="remember-row">
+            <label class="custom-check-wrap">
+              <input type="checkbox" id="chkRemember" />
+              <span class="custom-check-box"></span>
+            </label>
+            <span class="remember-label">Recuérdame</span>
+          </div>
+
+          <button class="btn-primary btn-full" id="btnLogin">ENTRAR</button>
+
+          <a href="#" class="link-forgot" id="linkForgot">¿Olvidaste contraseña?</a>
+
+          <div class="also-row">
+            <span class="also-line"></span>
+            <span class="also-text">También puedes</span>
+            <span class="also-line"></span>
+          </div>
+
+          <button class="btn-outline btn-full">Continuar con Google</button>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           PANTALLA 2 — HOME
+           ═══════════════════════════════════════════════════════ -->
+      <div class="screen" id="screenHome">
+        <header class="top-bar">
+          <span class="top-bar-time" id="topBarTimeHome">18:10</span>
+          <span class="top-bar-title">ALARMA</span>
+          <button class="btn-menu" type="button">&#9776;</button>
+        </header>
+
+        <div class="screen-body">
+
+          <!-- Tarjeta: Próxima alarma -->
+          <div class="card">
+            <p class="card-badge">🚨 Próxima alarma</p>
+            <p class="alarm-time-display">07:00 AM</p>
+            <p class="alarm-info-line">Rutina matutina</p>
+            <p class="alarm-info-line">Mañana, Lunes</p>
+            <a href="#" class="card-link" id="linkEditHome">🕐 Editar</a>
+          </div>
+
+          <!-- Tarjeta: Status de conexiones -->
+          <div class="card">
+            <p class="card-badge">📊 Status de conexiones</p>
+            <p class="status-line status-ok">☑ Calendario conectado</p>
+            <p class="status-line status-ok">☑ Sincronización: hace 1h</p>
+            <p class="status-line status-warn">⚠ Voz: 2/3 intentos</p>
+          </div>
+
+          <button class="btn-primary btn-full" id="btnNuevaAlarma">+ CREAR NUEVA ALARMA</button>
+        </div>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-screen="screenHome">
+            <span class="nav-icon">🏠</span>
+          </button>
+          <button class="nav-btn nav-active" data-screen="screenHome">
+            <span class="nav-icon">🚨</span>
+          </button>
+          <button class="nav-btn" data-screen="screenHome">
+            <span class="nav-icon">📅</span>
+          </button>
+          <button class="nav-btn" data-screen="screenPreferencias">
+            <span class="nav-icon">⚙️</span>
+          </button>
+          <button class="nav-btn" data-screen="screenHome">
+            <span class="nav-icon">👤</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           PANTALLA 3 — PREFERENCIAS
+           ═══════════════════════════════════════════════════════ -->
+      <div class="screen" id="screenPreferencias">
+        <header class="top-bar">
+          <span class="top-bar-time" id="topBarTimePref">18:15</span>
+          <span class="top-bar-title">PREFERENCIAS</span>
+          <button class="btn-menu" type="button">&#9776;</button>
+        </header>
+
+        <div class="screen-body">
+          <p class="screen-subtitle">Personaliza tu experiencia</p>
+
+          <div class="menu-list">
+            <div class="menu-item" id="menuSonidos">
+              <span class="menu-item-text">🎵 Sonidos de alarma</span>
+              <span class="menu-chevron">&gt;</span>
+            </div>
+            <div class="menu-item" id="menuVoz">
+              <span class="menu-item-text">🎤 Controles por voz</span>
+              <span class="menu-chevron">&gt;</span>
+            </div>
+            <div class="menu-item" id="menuLaborales">
+              <span class="menu-item-text">📅 Días laborales</span>
+              <span class="menu-chevron">&gt;</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-screen="screenHome">
+            <span class="nav-icon">🏠</span>
+          </button>
+          <button class="nav-btn" data-screen="screenHome">
+            <span class="nav-icon">🚨</span>
+          </button>
+          <button class="nav-btn" data-screen="screenHome">
+            <span class="nav-icon">📅</span>
+          </button>
+          <button class="nav-btn nav-active" data-screen="screenPreferencias">
+            <span class="nav-icon">⚙️</span>
+          </button>
+          <button class="nav-btn" data-screen="screenHome">
+            <span class="nav-icon">👤</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           PANTALLA 4 — SONIDOS DE ALARMA
+           ═══════════════════════════════════════════════════════ -->
+      <div class="screen" id="screenSonidos">
+        <header class="top-bar top-bar-sub">
+          <button class="btn-back-label" id="btnBackSonidos" type="button">&lt; Preferencias</button>
+          <span class="top-bar-title">Sonidos</span>
+          <button class="btn-menu" type="button">&#9776;</button>
+        </header>
+
+        <div class="screen-body">
+          <p class="section-heading">Sonidos de alarma matutina</p>
+
+          <div class="radio-card-list" id="radioSonidos">
+            <label class="radio-card radio-card-selected">
+              <input type="radio" name="sonido" value="suave" checked />
+              <span class="radio-dot"></span>
+              <span class="radio-card-text">Suave (natural)</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="sonido" value="moderado" />
+              <span class="radio-dot"></span>
+              <span class="radio-card-text">Moderado (gradual)</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="sonido" value="fuerte" />
+              <span class="radio-dot"></span>
+              <span class="radio-card-text">Fuerte (inmediato)</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="sonido" value="personalizado" />
+              <span class="radio-dot"></span>
+              <span class="radio-card-text">Personalizado</span>
+            </label>
+          </div>
+
+          <div class="preview-bar">
+            <span class="preview-link">🎵 Preview</span>
+            <span class="preview-hint">(Reproducir 3 seg)</span>
+          </div>
+
+          <div class="vol-block">
+            <p class="vol-title">Volumen:</p>
+            <div class="vol-row">
+              <span class="vol-icon">🔔</span>
+              <input type="range" class="vol-range" id="sliderSonidos" min="0" max="100" value="75" />
+              <span class="vol-icon">🔔</span>
+            </div>
+            <p class="vol-pct" id="pctSonidos">75%</p>
+          </div>
+
+          <div class="btn-pair">
+            <button class="btn-secondary" id="btnCancelSonidos">Cancelar</button>
+            <button class="btn-primary"   id="btnSaveSonidos">Guardar</button>
+          </div>
+        </div>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">🏠</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">🚨</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">📅</span></button>
+          <button class="nav-btn nav-active" data-screen="screenPreferencias"><span class="nav-icon">⚙️</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">👤</span></button>
+        </nav>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           PANTALLA 5 — CONTROLES POR VOZ
+           ═══════════════════════════════════════════════════════ -->
+      <div class="screen" id="screenVoz">
+        <header class="top-bar top-bar-sub">
+          <button class="btn-back-label" id="btnBackVoz" type="button">&lt; Preferencias</button>
+          <span class="top-bar-title">Voz</span>
+          <button class="btn-menu" type="button">&#9776;</button>
+        </header>
+
+        <div class="screen-body screen-body-scroll">
+          <p class="section-heading-main">Apagar alarma por voz</p>
+
+          <div class="toggle-row">
+            <span class="toggle-row-label">Habilitado:</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggleVozEnabled" checked />
+              <span class="toggle-track"><span class="toggle-knob"></span></span>
+            </label>
+          </div>
+
+          <p class="section-label-sm">Comandos disponibles:</p>
+          <div class="chk-list">
+            <label class="chk-item">
+              <input type="checkbox" checked />
+              <span class="chk-box"></span>
+              <span class="chk-text">"OK alarma, apaga"</span>
+            </label>
+            <label class="chk-item">
+              <input type="checkbox" checked />
+              <span class="chk-box"></span>
+              <span class="chk-text">"Alarma, detente"</span>
+            </label>
+            <label class="chk-item">
+              <input type="checkbox" checked />
+              <span class="chk-box"></span>
+              <span class="chk-text">"Silencio"</span>
+            </label>
+            <label class="chk-item">
+              <input type="checkbox" />
+              <span class="chk-box"></span>
+              <span class="chk-text">"Ayuda"</span>
+            </label>
+          </div>
+
+          <p class="section-label-sm">Volumen de reconocimiento:</p>
+          <div class="vol-row vol-row-inline">
+            <span class="vol-icon">🔔</span>
+            <input type="range" class="vol-range" id="sliderVoz" min="0" max="100" value="50" />
+            <span class="vol-pct-inline" id="pctVoz">50%</span>
+            <span class="vol-icon">🔔</span>
+          </div>
+
+          <p class="section-label-sm">Sensibilidad:</p>
+          <div class="radio-plain-list">
+            <label class="radio-plain">
+              <input type="radio" name="sensibilidad" value="normal" checked />
+              <span class="radio-dot"></span>
+              <span>Normal (tolerancia media)</span>
+            </label>
+            <label class="radio-plain">
+              <input type="radio" name="sensibilidad" value="estricta" />
+              <span class="radio-dot"></span>
+              <span>Estricta (menos falsos+)</span>
+            </label>
+            <label class="radio-plain">
+              <input type="radio" name="sensibilidad" value="flexible" />
+              <span class="radio-dot"></span>
+              <span>Flexible (más tolerancia)</span>
+            </label>
+          </div>
+
+          <div class="info-box">
+            ℹ️ Máximo 3 intentos fallidos antes de bloquear voz
+          </div>
+
+          <p class="section-label-sm">Estado:</p>
+          <p class="estado-ok">✓ Voz funcionando correctamente</p>
+          <p class="estado-hint">(Último test: hace 2h)</p>
+
+          <button class="btn-secondary btn-full" id="btnProbarVoz">Probar voz</button>
+
+          <div class="btn-pair">
+            <button class="btn-secondary" id="btnCancelVoz">Cancelar</button>
+            <button class="btn-primary"   id="btnSaveVoz">Guardar</button>
+          </div>
+        </div>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">🏠</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">🚨</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">📅</span></button>
+          <button class="nav-btn nav-active" data-screen="screenPreferencias"><span class="nav-icon">⚙️</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">👤</span></button>
+        </nav>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           PANTALLA 6 — DÍAS LABORALES
+           ═══════════════════════════════════════════════════════ -->
+      <div class="screen" id="screenLaborales">
+        <header class="top-bar top-bar-sub">
+          <button class="btn-back-label" id="btnBackLaborales" type="button">&lt; Preferencias</button>
+          <span class="top-bar-title">Laborales</span>
+          <button class="btn-menu" type="button">&#9776;</button>
+        </header>
+
+        <div class="screen-body screen-body-scroll">
+          <p class="section-heading-main">Apagar alarma por voz</p>
+
+          <div class="toggle-row">
+            <span class="toggle-row-label">Seguimiento automático</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggleSeguimiento" checked />
+              <span class="toggle-track"><span class="toggle-knob"></span></span>
+            </label>
+          </div>
+
+          <p class="section-label-sm">Fuente:</p>
+          <div class="radio-plain-list">
+            <label class="radio-plain">
+              <input type="radio" name="fuente" value="calendar" checked />
+              <span class="radio-dot"></span>
+              <span>Sincronizar con calendario (detecta automaticamente)</span>
+            </label>
+            <label class="radio-plain">
+              <input type="radio" name="fuente" value="manual" />
+              <span class="radio-dot"></span>
+              <span>Manual (selecciono días)</span>
+            </label>
+          </div>
+
+          <p class="section-label-sm">Si manual:</p>
+          <p class="section-label-sm">Dias laborales:</p>
+          <div class="chk-list">
+            <label class="chk-item"><input type="checkbox" checked /><span class="chk-box"></span><span class="chk-text">L</span></label>
+            <label class="chk-item"><input type="checkbox" checked /><span class="chk-box"></span><span class="chk-text">M</span></label>
+            <label class="chk-item"><input type="checkbox" checked /><span class="chk-box"></span><span class="chk-text">X</span></label>
+            <label class="chk-item"><input type="checkbox" /><span class="chk-box"></span><span class="chk-text">J</span></label>
+            <label class="chk-item"><input type="checkbox" /><span class="chk-box"></span><span class="chk-text">V</span></label>
+            <label class="chk-item"><input type="checkbox" /><span class="chk-box"></span><span class="chk-text">S</span></label>
+            <label class="chk-item"><input type="checkbox" /><span class="chk-box"></span><span class="chk-text">D</span></label>
+          </div>
+
+          <p class="section-label-sm">Regla:</p>
+          <div class="radio-plain-list">
+            <label class="radio-plain">
+              <input type="radio" name="regla" value="lv" checked />
+              <span class="radio-dot"></span>
+              <span>Alarmas activas solo L-V</span>
+            </label>
+            <label class="radio-plain">
+              <input type="radio" name="regla" value="sd" />
+              <span class="radio-dot"></span>
+              <span>Alarmas activas solo S-D</span>
+            </label>
+            <label class="radio-plain">
+              <input type="radio" name="regla" value="personalizado" />
+              <span class="radio-dot"></span>
+              <span>Personalizado</span>
+            </label>
+          </div>
+
+          <p class="section-label-sm">Efecto:</p>
+          <div class="radio-plain-list">
+            <label class="radio-plain">
+              <input type="radio" name="efecto" value="solo" checked />
+              <span class="radio-dot"></span>
+              <span>Solo en días seleccionados</span>
+            </label>
+            <label class="radio-plain">
+              <input type="radio" name="efecto" value="gradual" />
+              <span class="radio-dot"></span>
+              <span>Gradual (intensidad variable)</span>
+            </label>
+          </div>
+
+          <div class="btn-pair">
+            <button class="btn-secondary" id="btnCancelLaborales">Cancelar</button>
+            <button class="btn-primary"   id="btnSaveLaborales">Guardar</button>
+          </div>
+        </div>
+
+        <nav class="bottom-nav">
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">🏠</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">🚨</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">📅</span></button>
+          <button class="nav-btn nav-active" data-screen="screenPreferencias"><span class="nav-icon">⚙️</span></button>
+          <button class="nav-btn" data-screen="screenHome"><span class="nav-icon">👤</span></button>
+        </nav>
+      </div>
+
+      <!-- Toast global -->
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    </div><!-- /phone-frame -->
+  </div><!-- /desktop-bg -->
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+
+# Carpeta web generada (se regenera con: copy + npx cap sync android)
+www/
+
+# Proyecto Android nativo (se regenera con: npx cap add android)
+android/
+
+# APK generados
+*.apk
+*.aab
+
+# Capacitor config compilada
+dist/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
